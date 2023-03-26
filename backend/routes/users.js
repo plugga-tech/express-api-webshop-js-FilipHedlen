@@ -7,13 +7,16 @@ const router = express.Router();
 router.get("/", function(req, res) {
   const getUsers = req.app.locals.db.collection("users").find().toArray()
   .then(users => {
+    for (let i = 0; i < users.length; i++) {
+      delete users[i].password;
+    }
     res.send(users);
   })
   .catch(err => {
     console.log(err);
     res.status(500).send("Felmeddelande!");
- });
- });
+  });
+});
 
 
 // HÄMTA SPECIFIK USER // SKICKA HELA OBJEKTET
@@ -64,12 +67,12 @@ router.post("/login", function(req, res) {
       } else if (user.password !== userPassword) {
         return res.status(401).send("Inkorrekt lösenord");
       } else {
-        res.send(`Grattis ${user.name}, du är inloggad!`);
+        res.send(`${user.name}, du är inloggad!`);
       }
     })
     .catch(err => {
       console.log(err);
-      res.status(500).send("Felmeddelande!");
+      res.status(500).send("Error!");
     });
 });
 

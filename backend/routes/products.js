@@ -10,13 +10,13 @@ router.get("/", function(req, res) {
   })
   .catch(err => {
     console.log(err);
-    res.status(500).send("Error!");
+    res.status(500).send("Felmeddelande!");
  });
 });
 
 // HÄMTA SPECIFIK PRODUKT
 router.get("/:id", function(req, res) {
-  const productId  = req.params.id;
+  const productId  = Number(req.params.id);
   req.app.locals.db.collection("products").findOne({id: productId})
   .then(product => {
     if (!product) {

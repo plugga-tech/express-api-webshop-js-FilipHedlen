@@ -53,7 +53,7 @@ GET http://localhost:3000/api/products
 ###
 
 // HÄMTA SPECIFIK PRODUKT
-GET http://localhost:3000/api/products/250  // ID PÅ PRODUKT
+GET http://localhost:3000/api/products/100
 
 ###
 
@@ -79,15 +79,16 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-  "user": "// USER ID",
+  "userId": "641c4b64b56975e2625195f0",
+
       "products": [
     {
-      "productId": "300",
-      "quantity": 1
+      "productId": "150",
+      "quantity": 7
     },
     {
-      "productId": "200",
-      "quantity": 2
+      "productId": "350",
+      "quantity": 8
     }
   ]
 }
