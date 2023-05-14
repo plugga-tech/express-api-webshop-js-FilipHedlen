@@ -20,7 +20,7 @@ router.get("/", function(req, res) {
 
 
 // HÄMTA SPECIFIK USER // SKICKA HELA OBJEKTET
-router.post("/", function(req, res) {
+router.get("/:id", function(req, res) {
   const userId  = req.body.id;
   req.app.locals.db.collection("users").findOne({id: userId})
   .then(user => {

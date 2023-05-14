@@ -16,18 +16,18 @@ router.get("/", function(req, res) {
 
 // HÄMTA SPECIFIK PRODUKT
 router.get("/:id", function(req, res) {
-  const productId  = Number(req.params.id);
+  const productId  = req.body.id;
   req.app.locals.db.collection("products").findOne({id: productId})
-  .then(product => {
-    if (!product) {
-      return res.status(404).send("Kan inte hitta produkt!");
-    }
-    res.send(product);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).send("Felmeddelande!");
-  });
+    .then(product => {
+      if (!product) {
+        return res.status(404).send("Kan inte hitta produkt!");
+      }
+      res.send(product);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send("Felmeddelande!");
+    });
 });
 
 // SKAPA PRODUKT

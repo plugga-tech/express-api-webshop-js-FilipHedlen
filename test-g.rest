@@ -9,7 +9,7 @@ GET http://localhost:3000/api/users
 ###
 
 // HÄMTA SPECIFIK USER // SKICKA HELA OBJEKTET
-POST http://localhost:3000/api/users/
+GET http://localhost:3000/api/users/:id
 Content-Type: application/json
 
 {
@@ -53,8 +53,11 @@ GET http://localhost:3000/api/products
 ###
 
 // HÄMTA SPECIFIK PRODUKT
-GET http://localhost:3000/api/products/100
-
+GET http://localhost:3000/api/products/:id
+Content-Type: application/json
+{
+  "id": 150
+}
 ###
 
 // SKAPA PRODUKT
@@ -79,15 +82,15 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-  "userId": "641c4b64b56975e2625195f0",
+  "userId": 5,
 
       "products": [
     {
-      "productId": "150",
+      "id": 150,
       "quantity": 7
     },
     {
-      "productId": "350",
+      "id": 350,
       "quantity": 8
     }
   ]
