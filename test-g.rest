@@ -23,9 +23,9 @@ POST http://localhost:3000/api/users/add
 Content-Type: application/json
 
 {
-  "name": "Test Testsson",
-  "email": "test@mail.com",
-  "password": "test"
+  "name": "Anders Andersson",
+  "email": "anders@mail.se",
+  "password": "anders"
 }
 
 ###
@@ -35,8 +35,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "bosse@mail.com",
-  "password": "bosse2"
+  "email": "anders@mail.se",
+  "password": "anders"
 }
 
 ###
@@ -82,16 +82,16 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-  "userId": 5,
-
+  "userId": "647609ff8f16269e38be702d",
+  
       "products": [
     {
-      "id": 150,
-      "quantity": 7
+      "id": 100,
+      "quantity": 2
     },
     {
-      "id": 350,
-      "quantity": 8
+      "id": 250,
+      "quantity": 2
     }
   ]
 }
