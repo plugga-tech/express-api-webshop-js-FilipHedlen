@@ -14,8 +14,8 @@ router.post("/add", async (req, res) => {
     }
 
     for (const product of products) {
-      const { id: productId, quantity } = product;
-      const foundProduct = await req.app.locals.db.collection("products").findOne({ id: productId });
+      const { productId, quantity } = product;
+      const foundProduct = await req.app.locals.db.collection("products").findOne({ _id: new ObjectId(productId) });
       if (!foundProduct) {
         return res.status(404).json({ message: "Produkt kan inte hittas!" });
       }
@@ -25,7 +25,10 @@ router.post("/add", async (req, res) => {
         });
       }
       foundProduct.lager -= quantity;
-      await req.app.locals.db.collection("products").updateOne({ id: productId }, { $set: { lager: foundProduct.lager } });
+      await req.app.locals.db.collection("products").updateOne(
+        { _id: new ObjectId(productId) },
+        { $set: { lager: foundProduct.lager } }
+      );
     }
 
     const order = {
